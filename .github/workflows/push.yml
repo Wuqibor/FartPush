@@ -1,0 +1,28 @@
+name: FartPush
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: 0 0,14 * * *
+
+jobs:
+  check-in:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Python and Requirements
+        run: |
+          sudo apt update
+          sudo apt install python3
+          sudo pip3 install -r requirements.txt
+
+      - name: Push
+        run: |
+          dingtoken='${{ secrets.DINGTOKEN }}'
+          dingsecret='${{ secrets.DINGSECRET }}'
+          python3 push.py --dingtoken ${dingtoken} --dingsecret ${dingsecret}
