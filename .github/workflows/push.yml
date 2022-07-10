@@ -7,7 +7,7 @@ on:
     - cron: 0 0,14 * * *
 
 jobs:
-  check-in:
+  FastPush:
     runs-on: ubuntu-latest
 
     steps:
