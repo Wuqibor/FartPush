@@ -6,9 +6,12 @@ import requests
 import time
 import urllib.parse
 import hashlib
+import timeout_decorator
+
 
 
 # 钉钉推送 加签 text模式 # 标题 消息 token 签名密钥 是否艾特全体 # By Wuqibor
+@timeout_decorator.timeout(60)
 def ding(title, msg, token, secret, isAtAll=True):
     # 推送
     headers = {
