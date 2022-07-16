@@ -1,2 +1,2 @@
-requests>=2.24.0
-timeout_decorator>=0.0.0
+requests
+timeout_decorator
